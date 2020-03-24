@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  <title>Travel Buddy</title>
+</head>
+
+<body>
+
+<!-- Page Wrap -->
+  <div class="container is-fluid">
+
+    <!-- Section: Hero -->
+    <section class="hero is-primary is-bold is-centered">
+      <div class="hero-body">
+        <div class="container  has-text-centered">
+          <h1 class="title">
+            <i class="fas fa-journal-whills"></i>
+            Travel Buddy
+            <i class="fas fa-crow"></i>
+          </h1>
+          <h2 class="subtitle">
+            The destination is the end...
+          </h2>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Section: Get Country to Lookup -->
+    <div class="section">
+      <div class="field has-addons">
+        <div class="mr-1">
+          <label for="input-country" class="label is-medium">Enter a country to explore:</label>
+        </div>
+        <div class="control">
+          <input class="input is-medium" type="text" placeholder="Japan" id="input-country">
+        </div>
+        <div class="control ">
+          <button type="submit" class="button is-primary is-medium" id="search-btn">Search</button>
+        </div>
+      </div>
+      <div class="small-section" id="search-list">
+      </div>
+    </div>
+
+    <!-- Section: Display Results -->
+    <section class="med-section">
+
+      <div class="panel is-primary is-centered">
+
+          <!-- Country Name Result -->
+        <h2 class="panel-heading has-text-centered is-uppercase" id="output-country">
+          <i class="fas fa-passport"></i>
+          country
+        </h2>
+        <div class="panel-block">
+          <h3 class="has-text-weight-bold">
+            <i class="fas fa-utensils"></i>
+            Recipes
+            <i class="fas fa-utensils"></i>
+          </h3>
+        </div>
+
+        <!-- Recipe Output -->
+        <div class="panel-block columns is-desktop" id="recipe-list">
+        </div>
+
+        <div class="panel-block">
+          <h3 class="has-text-weight-bold	">
+            <i class="fas fa-map-marked-alt"></i>
+            Travel Ideas!
+            <i class="fas fa-monument"></i>
+          </h3>
+        </div>
+
+        <!-- Tourist Outputs -->
+        <div class="panel-block columns is-desktop" id="tourist-list">
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <!--container end-->
+  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        Project One: <strong>TravelBuddy</strong> by <a href="https://github.com/mpiarahman16">Pia</a>, 
+        <a href="https://github.com/Slimjim145">Fabian</a>, and
+        <a href="https://github.com/stadds">Sam</a>.
+      </p>
+      <p>Source code can be found <a href="https://github.com/stadds/TravelBuddy"> here on GitHub</a>.</p>
+    </div>
+  </footer>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<!-- 
+<div class="column">
+  <div class="card">
+      <header class="card-header">
+          <p class="card-header-title">City</p>
+      </header>
+      <div class="card-content">
+          <p class="content"> Test </p>
+          <p class="content"> Test </p>
+          <p class="content"> Test </p>
+      </div>
+      <footer class="card-footer tags">
+          <span class="card-footer-item tag">One</span>
+          <span class="card-footer-item tag">Two</span>
+          <span class="card-footer-item tag">Three</span>
+      </footer>
+  </div>
+</div> -->
