@@ -16,19 +16,21 @@ function buildQueryURL() {
     var queryURL = `https://sandbox.musement.com/api/v3/countries/${countryID}/activities?offset=0&limit=10`;
     return queryURL
 }
-settings.url = buildQueryURL()
-$.ajax(settings).done(updateTravel);
 
 function updateTravel(TravelData) {
     //var numTravelCards = "5"
+
+    $("#tourist-list").empty()
+
     for (var i = 0; i < NUMCARDS; i++) {
+        console.log(TravelData[i])
         console.log("city;" + TravelData[i].city.name)
         console.log("title;" + TravelData[i].title)
         console.log("description;" + TravelData[i].description)
         console.log("categories;" + TravelData[i].categories[0].name)
 
         var $colCard = $("<div>").addClass("column");
-        var $card =$("<div>").addClass("card");
+        var $card = $("<div>").addClass("card");
         $colCard.append($card)
 
         var $cardHeader = $("<header>").addClass("card-header");
@@ -45,10 +47,25 @@ function updateTravel(TravelData) {
         $cardContent.append($pDescription)
 
         $("#tourist-list").append($colCard)
-
     }
 }
 
+
+$(document).ready(function () {
+    $("#search-btn").on("click", function (event) {
+        event.preventDefault()
+        var input = $("#input-country").val()
+        console.log(input)
+        settings.url = buildQueryURL()
+        $.ajax(settings).done(updateTravel);
+        
+
+
+    })
+}
+
+
+)
 
 
 
