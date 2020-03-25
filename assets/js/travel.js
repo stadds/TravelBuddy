@@ -58,6 +58,7 @@ $(document).ready(function () {
         console.log(input)
         settings.url = buildQueryURL()
         $.ajax(settings).done(updateTravel);
+        
 
 
     })
