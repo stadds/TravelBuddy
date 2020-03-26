@@ -1,4 +1,4 @@
-const NUMCARDS = 5
+
 var settings = {
     // "async": true,
     // "crossDomain": true,
@@ -10,8 +10,9 @@ var settings = {
         "x-musement-currency": "USD"
     }
 }
+
 function buildQueryURL() {
-    var countryID = "82"
+    var countryID = country.id;
 
     var queryURL = `https://sandbox.musement.com/api/v3/countries/${countryID}/activities?offset=0&limit=10`;
     return queryURL
@@ -52,20 +53,20 @@ function updateTravel(TravelData) {
 
 
 $(document).ready(function () {
+
+
     $("#search-btn").on("click", function (event) {
+
+        clear();
+
         event.preventDefault()
-        var input = $("#input-country").val()
-        console.log(input)
+
         settings.url = buildQueryURL()
-        $.ajax(settings).done(updateTravel);
-        
-
-
+        $.ajax(settings).done(updateTravel);   
     })
-}
 
 
-)
+})
 
 
 
