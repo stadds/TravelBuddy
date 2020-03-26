@@ -1,6 +1,6 @@
 //Mine//
-const NUMCARDS = 5
-var settings = {
+
+var settingsRecipe = {
     // "async": true,
     // "crossDomain": true,
     "url": "",
@@ -10,19 +10,22 @@ var settings = {
         "x-rapidapi-key": "e479f117b8msh8b7892b19f6f980p19340ejsn31b8edf21f90"
     }
 }
+
 function buildRecipeURL() {
-    var countryCuisine = "italian"
+
+    var countryCuisine = country.adj
 
     var queryURL = `https://recipe-puppy.p.rapidapi.com/?q=${countryCuisine}`;
     return queryURL
 }
-settings.url = buildRecipeURL()
-$.ajax(settings).done(updateRecipe);
+
 
 function updateRecipe(RecipeData) {
     var jsonRecipeData = JSON.parse(RecipeData)
     var resultsArr = jsonRecipeData.results
     console.log(RecipeData);
+
+    $("#recipe-list").empty();
 
     for (var i = 0; i < NUMCARDS; i++) {
         console.log("title;" + resultsArr[i].title)
@@ -45,11 +48,11 @@ function updateRecipe(RecipeData) {
 
         var $pTitle = $("<p>").addClass("content").text("ingredients:\n" + resultsArr[i].ingredients);
         $cardContent.append($pTitle)
-        
+
         var $cardFooter = $("<footer>").addClass("card-footer");
         $card.append($cardFooter)
 
-        var $aFooter = $("<a>").addClass("card-footer-item").attr({href:resultsArr[i].href,target:"_blank"});
+        var $aFooter = $("<a>").addClass("card-footer-item").attr({ href: resultsArr[i].href, target: "_blank" });
         $aFooter.text("view full recipe here")
         $cardFooter.append($aFooter)
 
@@ -60,4 +63,21 @@ function updateRecipe(RecipeData) {
 }
 
 
-$(document).ready()
+$(document).ready(function () {
+
+    
+    $("#search-btn").on("click", function (event) {
+
+        event.preventDefault();
+
+        clear();
+
+
+        settingsRecipe.url = buildRecipeURL();
+        $.ajax(settingsRecipe).done(updateRecipe);
+
+    })
+
+  
+
+});

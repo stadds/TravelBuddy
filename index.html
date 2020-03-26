@@ -15,7 +15,7 @@
 
 <body>
 
-<!-- Page Wrap -->
+  <!-- Page Wrap -->
   <div class="container is-fluid">
 
     <!-- Section: Hero -->
@@ -42,15 +42,28 @@
           <label for="input-country" class="label is-medium">Enter a country to explore:</label>
         </div>
         <div class="control">
-          <input class="input is-medium" type="text" placeholder="Japan" id="input-country">
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" id="dropdown-btn">
+                <span id="choice">Choose a Country</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content" id="cntry-choice">
+
+              </div>
+            </div>
+          </div>
         </div>
         <div class="control ">
           <button type="submit" class="button is-primary is-medium" id="search-btn">Search</button>
         </div>
       </div>
       <!-- Recently Searched List -->
-      <div class="small-section" id="search-list">
-      </div>
+      <div class="small-section are-large" id="search-list">
     </div>
 
     <!-- Section: Display Results -->
@@ -58,7 +71,7 @@
 
       <div class="panel is-primary is-centered">
 
-          <!-- Country Name Result -->
+        <!-- Country Name Result -->
         <h2 class="panel-heading has-text-centered is-uppercase" id="output-country">
           <i class="fas fa-passport"></i>
           country
@@ -92,11 +105,11 @@
 
   </div>
   <!--container end-->
-  
+
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        Project One: <strong>TravelBuddy</strong> by <a href="https://github.com/mpiarahman16">Pia</a>, 
+        Project One: <strong>TravelBuddy</strong> by <a href="https://github.com/mpiarahman16">Pia</a>,
         <a href="https://github.com/Slimjim145">Fabian</a>, and
         <a href="https://github.com/stadds">Sam</a>.
       </p>
@@ -108,7 +121,10 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
 
-    <script src="assets/js/travel.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/travel.js"></script>
+  <script src="assets/js/travelbud.js"></script>
+  
 </body>
 
 </html>
