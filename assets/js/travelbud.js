@@ -23,7 +23,7 @@ function buildRecipeURL() {
 function updateRecipe(RecipeData) {
     var jsonRecipeData = JSON.parse(RecipeData)
     var resultsArr = jsonRecipeData.results
-   // console.log(RecipeData);
+    // console.log(RecipeData);
 
     $("#recipe-list").empty();
 
@@ -62,10 +62,14 @@ function updateRecipe(RecipeData) {
     }
 }
 
+function getRecipeAPI() {
+    settingsRecipe.url = buildRecipeURL();
+    $.ajax(settingsRecipe).done(updateRecipe);
+}
 
 $(document).ready(function () {
 
-    
+
     $("#search-btn").on("click", function (event) {
 
         event.preventDefault();
@@ -73,14 +77,13 @@ $(document).ready(function () {
         clear();
 
         //ensure country is set before searching
-        if(country.isSet){
-            settingsRecipe.url = buildRecipeURL();
-            $.ajax(settingsRecipe).done(updateRecipe);
+        if (country.isSet) {
+            getRecipeAPI();
         }
-       
+
 
     })
 
-  
+
 
 });

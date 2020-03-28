@@ -292,6 +292,10 @@ function getSearchedCountryData(event) {
     country.name = $(this).data("name");
     country.isocode = $(this).data("isocode");
     country.isSet = true;
+    $("#output-country").text(country.name);
+
+    getTouristAPI();
+    getRecipeAPI();
 }
 
 
@@ -378,11 +382,11 @@ $(document).ready(function () {
         renderSearchList();
     })
 
-    // initSearchList();
+    initSearchList();
 
 
 });
 
 
 // Adding a click event listener to all elements with a class of searched
-$(document).on("click", ".searchList", getSearchedCountryData);   
+$(document).on("click", ".searched", getSearchedCountryData);   

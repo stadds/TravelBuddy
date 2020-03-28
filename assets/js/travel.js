@@ -51,6 +51,11 @@ function updateTravel(TravelData) {
     }
 }
 
+function getTouristAPI(){
+    settings.url = buildQueryURL();
+    $.ajax(settings).done(updateTravel);  
+}
+
 
 $(document).ready(function () {
 
@@ -63,8 +68,7 @@ $(document).ready(function () {
 
         //ensure country is set before searching
         if(country.isSet){
-            settings.url = buildQueryURL()
-            $.ajax(settings).done(updateTravel);   
+            getTouristAPI();
         }
        
     })
