@@ -23,15 +23,15 @@ function buildRecipeURL() {
 function updateRecipe(RecipeData) {
     var jsonRecipeData = JSON.parse(RecipeData)
     var resultsArr = jsonRecipeData.results
-    console.log(RecipeData);
+   // console.log(RecipeData);
 
     $("#recipe-list").empty();
 
     for (var i = 0; i < NUMCARDS; i++) {
-        console.log("title;" + resultsArr[i].title)
-        console.log("ingredients;" + resultsArr[i].ingredients)
-        console.log("url;" + resultsArr[i].href)
-        console.log("pic;" + resultsArr[i].thumbnail);
+        // console.log("title;" + resultsArr[i].title)
+        // console.log("ingredients;" + resultsArr[i].ingredients)
+        // console.log("url;" + resultsArr[i].href)
+        // console.log("pic;" + resultsArr[i].thumbnail);
 
         var $colCard = $("<div>").addClass("column");
         var $card = $("<div>").addClass("card");
@@ -72,9 +72,12 @@ $(document).ready(function () {
 
         clear();
 
-
-        settingsRecipe.url = buildRecipeURL();
-        $.ajax(settingsRecipe).done(updateRecipe);
+        //ensure country is set before searching
+        if(country.isSet){
+            settingsRecipe.url = buildRecipeURL();
+            $.ajax(settingsRecipe).done(updateRecipe);
+        }
+       
 
     })
 

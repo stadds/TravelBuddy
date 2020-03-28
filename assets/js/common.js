@@ -1,15 +1,21 @@
 // GLOBAL VARIABLES
 // ==============================================================
-const NUMCARDS = 5
+const NUMCARDS = 5;
+const SEARCHEDLIST = "Searched";
+
 var gblADJ = "";
 var gblID = "";
 
-var country = {
+var objCountry = {
     name: "",
     id: "",
-    adj:"",
+    adj: "",
     isocode: "",
-}
+    isSet: false,
+
+};
+
+var country = Object.create(objCountry);
 
 
 // GLOBAL OBJECT
@@ -195,7 +201,15 @@ const countries = [
     { id: "185", name: "Wales", iso_code: "GB", adj: "Welsh" },
 ];
 
-var countryList = [];
+//store searches
+var countrySearchList = [];
+
+//clear the cards 
+function clear() {
+    $("#tourist-list").empty();
+    $("#recipe-list").empty();
+}
+
 
 /*
 
@@ -207,41 +221,107 @@ var countryList = [];
         <button class="button is-danger is-rounded">Rounded</button>
 */
 
-function showFivePreviousChoices(){
+// STORE / DISPLAY SEARCHED COUNTRIES
+// ==============================================================
+
+function storeSearchList() {
+    console.log("storing: " + JSON.stringify(countrySearchList));
+
+    localStorage.setItem(SEARCHEDLIST, JSON.stringify(countrySearchList));
+}
+
+//initSearchList
+function initSearchList() {
+
+    console.log("init SearchList");
+
+    var storedList = JSON.parse(localStorage.getItem(SEARCHEDLIST));
+
+    if (storedList == null) {
+        console.log("No previous searches!");
+
+        return;
+    }
+    else {
+        console.log("WE'RE ON TO SOMETHING");
+        countrySearchList = storedList;
+        renderSearchList();
+    }
+}
+
+function printSearchList() {
+    for (let i = 0; i < countrySearchList.length; i++) {
+
+        console.log(JSON.stringify(countrySearchList[i]));
+    }
+}
+
+function renderSearchList() {
+
+    if (countrySearchList == null) {
+        return;
+    }
+
+    //clear the button list
+    $("#search-list").empty();
+
+    for (let i = 0; i < countrySearchList.length; i++) {
+
+        console.log("rendering: " + countrySearchList[i].name);
+
+        var $searchedCountry = $("<button>").addClass("button is-primary is-rounded searched");
+        $searchedCountry.text(countrySearchList[i].name);
+        $searchedCountry.data("museid", countrySearchList[i].id);
+        $searchedCountry.data("name", countrySearchList[i].name);
+        $searchedCountry.data("adj", countrySearchList[i].adj);
+        $searchedCountry.data("isocode", countrySearchList[i].iso_code);
+
+        $("#search-list").append($searchedCountry);
+    }
 
 }
 
-//clear the cards 
-function clear(){
-    $("#tourist-list").empty();
-    $("#recipe-list").empty();
+function getSearchedCountryData(event) {
+
+    console.log("do previous search");
+
+    event.preventDefault();
+
+    country.adj = $(this).data("adj");
+    country.id = $(this).data("museid");
+    country.name = $(this).data("name");
+    country.isocode = $(this).data("isocode");
+    country.isSet = true;
 }
 
 
 
 $(document).ready(function () {
 
+    console.log(country.isSet);
 
-    
+    // Create the Dropdown
     for (let i = 0; i < countries.length; i++) {
         //console.log(countries[i]);
-        var $aCntry = $("<a>").addClass("dropdown-item").attr("href","#");
-         $aCntry.text(countries[i].name);
-         $aCntry.data("museid",countries[i].id);
-         $aCntry.data("name",countries[i].name);
-         $aCntry.data("adj",countries[i].adj);
-         $aCntry.data("isocode",countries[i].iso_code);
+        var $aCntry = $("<a>").addClass("dropdown-item").attr("href", "#");
+        $aCntry.text(countries[i].name);
+        $aCntry.data("museid", countries[i].id);
+        $aCntry.data("name", countries[i].name);
+        $aCntry.data("adj", countries[i].adj);
+        $aCntry.data("isocode", countries[i].iso_code);
         $("#cntry-choice").append($aCntry);
     }
 
 
-    $("#dropdown-btn").on("click",function(){
+    //when the dropdown is clicked, show items, make it tabbable
+    $("#dropdown-btn").on("click", function () {
         $(".dropdown").addClass("is-active");
-        $(".dropdowm-item").attr("tabindex","0");
+        $(".dropdowm-item").attr("tabindex", "0");
     })
 
-    
-    $(".dropdown-item").on("click",function(){
+
+    //when an item is clicked, get what it was and store it
+    $(".dropdown-item").on("click", function () {
         console.log($(this).data("name"));
         console.log($(this).data("adj"));
         console.log($(this).data("isocode"));
@@ -253,19 +333,56 @@ $(document).ready(function () {
         country.id = $(this).data("museid");
         country.name = $(this).data("name");
         country.isocode = $(this).data("isocode");
+        country.isSet = true;
+
+        //add to searchedList
 
 
         $(".dropdown").removeClass("is-active");
     })
 
 
-    
+    //when search btn clicked, update country area
     $("#search-btn").on("click", function (event) {
 
         event.preventDefault();
 
-        $("#output-country").text(country.name);
+
+        if (country.isSet) {
+
+            //create new variable of country object
+            var tmpCountry = $.extend(true,{},country);
+
+            $("#output-country").text(country.name);
+
+            console.log(country.isSet);
+
+            // countrySearchList.push(tmpCountry);
+
+            
+            if(countrySearchList.length > 4){
+                countrySearchList.pop();
+                countrySearchList.unshift(tmpCountry);
+                console.log("adding: " + tmpCountry.name);
+
+            }
+            else{
+                countrySearchList.unshift(tmpCountry);
+                console.log("adding new: " + tmpCountry.name);
+            }
+
+           // printSearchList();
+        }
+
+        storeSearchList();
+        renderSearchList();
     })
 
-   
+    // initSearchList();
+
+
 });
+
+
+// Adding a click event listener to all elements with a class of searched
+$(document).on("click", ".searchList", getSearchedCountryData);   
