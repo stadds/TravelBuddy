@@ -24,11 +24,11 @@ function updateTravel(TravelData) {
     $("#tourist-list").empty()
 
     for (var i = 0; i < NUMCARDS; i++) {
-        console.log(TravelData[i])
-        console.log("city;" + TravelData[i].city.name)
-        console.log("title;" + TravelData[i].title)
-        console.log("description;" + TravelData[i].description)
-        console.log("categories;" + TravelData[i].categories[0].name)
+        // console.log(TravelData[i])
+        // console.log("city;" + TravelData[i].city.name)
+        // console.log("title;" + TravelData[i].title)
+        // console.log("description;" + TravelData[i].description)
+        // console.log("categories;" + TravelData[i].categories[0].name)
 
         var $colCard = $("<div>").addClass("column");
         var $card = $("<div>").addClass("card");
@@ -51,6 +51,11 @@ function updateTravel(TravelData) {
     }
 }
 
+function getTouristAPI(){
+    settings.url = buildQueryURL();
+    $.ajax(settings).done(updateTravel);  
+}
+
 
 $(document).ready(function () {
 
@@ -61,8 +66,11 @@ $(document).ready(function () {
 
         event.preventDefault()
 
-        settings.url = buildQueryURL()
-        $.ajax(settings).done(updateTravel);   
+        //ensure country is set before searching
+        if(country.isSet){
+            getTouristAPI();
+        }
+       
     })
 
 

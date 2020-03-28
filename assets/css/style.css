@@ -14,6 +14,10 @@
     margin-right: 1.5em;
 }
 
+.mt-1{
+    margin-top: 1em;
+}
+
 .shadow-box{
     border-radius: 6px;
     box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
@@ -22,4 +26,14 @@
 .dropdown-content {
     max-height: 20em;
     overflow: auto;
+}
+
+
+.rounded-top{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.searched{
+    margin-bottom: 1 em;
 }

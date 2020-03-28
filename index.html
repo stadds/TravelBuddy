@@ -15,105 +15,135 @@
 
 <body>
 
-  <!-- Page Wrap -->
-  <div class="container is-fluid">
-
-    <!-- Section: Hero -->
-    <section class="hero is-primary is-bold is-centered">
-      <div class="hero-body">
-        <div class="container  has-text-centered">
-          <h1 class="title">
-            <i class="fas fa-journal-whills"></i>
-            Travel Buddy
-            <i class="fas fa-crow"></i>
-          </h1>
-          <h2 class="subtitle">
-            The destination is the end...
-          </h2>
-        </div>
+   <!-- Section: Hero -->
+   <section class="hero is-primary is-bold is-centered">
+    <div class="hero-body">
+      <div class="container  has-text-centered">
+        <h1 class="title">
+          <i class="fas fa-journal-whills"></i>
+          Travel Buddy
+          <i class="fas fa-crow"></i>
+        </h1>
+        <h2 class="subtitle">
+          The destination is the end...
+        </h2>
       </div>
-    </section>
+    </div>
+  </section>
 
 
-    <!-- Section: Get Country to Lookup -->
-    <div class="section">
-      <div class="field has-addons">
-        <div class="mr-1">
-          <label for="input-country" class="label is-medium">Enter a country to explore:</label>
-        </div>
-        <div class="control">
-          <div class="dropdown">
-            <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" id="dropdown-btn">
-                <span id="choice">Choose a Country</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
+   <!-- Section: Get Country to Lookup -->
+   <section class="section">
+    <div class="container is-fluid">
+      <!-- Main container -->
+      <div class="columns">
+
+        <div class="column is-two-thirds">
+
+          <div class="columns is-desktop">
+            <div class="column has-text-right-desktop">
+              <label for="input-country" class="label is-medium">Enter a country to explore:</label>
             </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-              <div class="dropdown-content" id="cntry-choice">
+            <div class="column">
+              <div class="field is-grouped">
+                <div class="control">
 
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button is-medium" aria-haspopup="true" aria-controls="dropdown-menu"
+                        id="dropdown-btn">
+                        <span id="choice">Choose a Country</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                      <div class="dropdown-content" id="cntry-choice">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="control ">
+                  <button type="submit" class="button is-primary is-medium" id="search-btn">Search</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="control ">
-          <button type="submit" class="button is-primary is-medium" id="search-btn">Search</button>
+
+        <div class="column">
+          <div class="columns is-desktop">
+             <!-- Recently Searched List -->
+            <div class="column" id="search-list">
+          
+            </div>
+          </div>
         </div>
+
       </div>
-      <!-- Recently Searched List -->
-      <div class="small-section are-large" id="search-list">
     </div>
+  </section>
 
-    <!-- Section: Display Results -->
-    <section class="med-section">
+     <!-- Section: Display Results -->
+   <section class="section">
+    <div class="shadow-box">
 
-      <div class="panel is-primary is-centered">
+      <section class="hero is-small is-primary has-text-centered rounded-top">
+        <div class="hero-body">
+          <div class="container">
+             <!-- Country Name Result -->
+            <h2 class="title" id="output-country">
+              <i class="fas fa-passport"></i>
+              Country
+            </h2>
+          </div>
+        </div>
+      </section>
 
-        <!-- Country Name Result -->
-        <h2 class="panel-heading has-text-centered is-uppercase" id="output-country">
-          <i class="fas fa-passport"></i>
-          country
+       <!-- Recipe Output -->
+      <div class="container is-fluid">
+        <h2 class="title mt-1">
+          <i class="fas fa-utensils"></i>
+          Recipes
+          <i class="fas fa-utensils"></i>
         </h2>
-        <div class="panel-block">
-          <h3 class="has-text-weight-bold">
-            <i class="fas fa-utensils"></i>
-            Recipes
-            <i class="fas fa-utensils"></i>
-          </h3>
-        </div>
 
-        <!-- Recipe Output -->
-        <div class="panel-block columns is-desktop" id="recipe-list">
-        </div>
+        <div class="columns is-desktop" id="recipe-list">
 
-        <div class="panel-block">
-          <h3 class="has-text-weight-bold	">
-            <i class="fas fa-map-marked-alt"></i>
-            Travel Ideas!
-            <i class="fas fa-monument"></i>
-          </h3>
-        </div>
-
-        <!-- Tourist Outputs -->
-        <div class="panel-block columns is-desktop" id="tourist-list">
         </div>
       </div>
 
-    </section>
+      <hr>
 
-  </div>
-  <!--container end-->
+       <!-- Tourist Outputs -->
+      <div class="container is-fluid">
+        <h2 class="title">
+          <i class="fas fa-map-marked-alt"></i>
+          Travel Ideas!
+          <i class="fas fa-monument"></i>
+        </h2>
+        <div class="columns is-desktop" id="tourist-list">
+
+        </div>
+      </div>
+
+      <hr>
+    </div>
+  </section>
+  <!-- End Results -->
 
   <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        Project One: <strong>TravelBuddy</strong> by <a href="https://github.com/mpiarahman16">Pia</a>,
-        <a href="https://github.com/Slimjim145">Fabian</a>, and
-        <a href="https://github.com/stadds">Sam</a>.
-      </p>
-      <p>Source code can be found <a href="https://github.com/stadds/TravelBuddy"> here on GitHub</a>.</p>
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          Project One: <strong>TravelBuddy</strong> by <a href="https://github.com/mpiarahman16">Pia</a>,
+          <a href="https://github.com/Slimjim145">Fabian</a>, and
+          <a href="https://github.com/stadds">Sam</a>.
+        </p>
+        <p>Source code can be found <a href="https://github.com/stadds/TravelBuddy"> here on GitHub</a>.</p>
+      </div>
     </div>
   </footer>
 
@@ -128,22 +158,3 @@
 </body>
 
 </html>
-
-<!-- 
-<div class="column">
-  <div class="card">
-      <header class="card-header">
-          <p class="card-header-title">City</p>
-      </header>
-      <div class="card-content">
-          <p class="content"> Test </p>
-          <p class="content"> Test </p>
-          <p class="content"> Test </p>
-      </div>
-      <footer class="card-footer tags">
-          <span class="card-footer-item tag">One</span>
-          <span class="card-footer-item tag">Two</span>
-          <span class="card-footer-item tag">Three</span>
-      </footer>
-  </div>
-</div> -->
